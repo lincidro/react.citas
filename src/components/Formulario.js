@@ -23,10 +23,23 @@ const Formulario = (props) => {
   //3 Extraer valores del state para setear en value
   const { nombre, propietario, fecha, hora, comentarios } = cita;
 
+  //4 Al hacer click en Agregar cita, guardar form
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    //Validar
+
+    //Asignar un Id
+
+    //Crear la cita
+
+    //Reiniciar el form
+  };
+
   return (
     <Fragment>
       <h2>Crear Cita</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor='nombre'>Nombre mascota</label>
         <input
           type='text'
