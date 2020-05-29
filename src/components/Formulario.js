@@ -11,6 +11,7 @@ const mascota = {
 const Formulario = (props) => {
   //1 Crear estado
   const [cita, actualizarCita] = useState(mascota);
+  const [error, actualizarError] = useState(false);
 
   //2 Actualizar objeto mascota
   const handleChange = (e) => {
@@ -28,6 +29,16 @@ const Formulario = (props) => {
     e.preventDefault();
 
     //Validar
+    if (
+      nombre.trim() === '' ||
+      propietario.trim() === '' ||
+      fecha.trim() === '' ||
+      hora.trim() === '' ||
+      comentarios.trim() === ''
+    ) {
+      actualizarError(true);
+      return;
+    }
 
     //Asignar un Id
 
@@ -38,7 +49,8 @@ const Formulario = (props) => {
 
   return (
     <Fragment>
-      <h2>Crear Cita</h2>
+      {error ? <p className='alerta-error'>Completar todos los campos</p> : null}
+
       <form onSubmit={handleSubmit}>
         <label htmlFor='nombre'>Nombre mascota</label>
         <input
