@@ -1,19 +1,27 @@
 import React, { Fragment, useState } from 'react';
 
-const Formulario = (props) => {
-  const mascota = {
-    nombre: '',
-    propietario: '',
-    fecha: '',
-    hora: '',
-    comentarios: '',
-  };
+const mascota = {
+  nombre: '',
+  propietario: '',
+  fecha: '',
+  hora: '',
+  comentarios: '',
+};
 
+const Formulario = (props) => {
+  //1 Crear estado
   const [cita, actualizarCita] = useState(mascota);
 
-  const handleChange = () => {
-    console.log('handleChange');
+  //2 Actualizar objeto mascota
+  const handleChange = (e) => {
+    actualizarCita({
+      ...cita,
+      [e.target.name]: e.target.value,
+    });
   };
+
+  //3 Extraer valores del state para setear en value
+  const { nombre, propietario, fecha, hora, comentarios } = cita;
 
   return (
     <Fragment>
@@ -27,6 +35,7 @@ const Formulario = (props) => {
           className='u-full-width'
           placeholder='Nombre mascota'
           onChange={handleChange}
+          value={nombre}
         />
 
         <label htmlFor='propietario'>Dueño</label>
@@ -37,6 +46,7 @@ const Formulario = (props) => {
           className='u-full-width'
           placeholder='Nombre del dueño'
           onChange={handleChange}
+          value={propietario}
         />
 
         <label htmlFor='fecha'>Fecha</label>
@@ -46,6 +56,7 @@ const Formulario = (props) => {
           name='fecha'
           className='u-full-width'
           onChange={handleChange}
+          value={fecha}
         />
 
         <label htmlFor='hora'>Hora</label>
@@ -55,6 +66,7 @@ const Formulario = (props) => {
           name='hora'
           className='u-full-width'
           onChange={handleChange}
+          value={hora}
         />
 
         <label htmlFor='comentarios'>Comentarios</label>
@@ -63,6 +75,7 @@ const Formulario = (props) => {
           id='comentarios'
           className='u-full-width'
           onChange={handleChange}
+          value={comentarios}
         ></textarea>
 
         <button type='submit' className='u-full-width button-primary'>
