@@ -9,7 +9,7 @@ const mascota = {
   comentarios: '',
 };
 
-const Formulario = (props) => {
+const Formulario = ({ crearCita }) => {
   //1 Crear estado
   const [cita, actualizarCita] = useState(mascota);
   const [error, actualizarError] = useState(false);
@@ -46,9 +46,9 @@ const Formulario = (props) => {
 
     //Asignar un Id
     cita.id = uuid(); //Podemos agregarle atributos a un objeto
-    console.log(cita);
 
     //Crear la cita
+    crearCita(cita);
 
     //Reiniciar el form
   };
