@@ -51,6 +51,7 @@ const Formulario = ({ crearCita }) => {
     crearCita(cita);
 
     //Reiniciar el form
+    actualizarCita(mascota);
   };
 
   return (
