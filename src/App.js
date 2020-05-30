@@ -6,8 +6,15 @@ function App() {
   //Arreglo de citas
   const [citas, setCitas] = useState([]);
 
+  //Crear cita
   const crearCita = (citaDelFormulario) => {
     setCitas([...citas, citaDelFormulario]);
+  };
+
+  //Eliminar cita
+  const eliminarCita = (id) => {
+    console.log('Eliminar cita');
+    setCitas(citas.filter((cita) => cita.id !== id));
   };
 
   return (
@@ -20,7 +27,7 @@ function App() {
           </div>
           <div className='one-half column'>
             {citas.map((cita) => (
-              <Cita key={cita.id} cita={cita} />
+              <Cita key={cita.id} cita={cita} eliminarCita={eliminarCita} />
             ))}
           </div>
         </div>
