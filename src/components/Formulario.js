@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import uuid from 'uuid/dist/v4';
 
 const mascota = {
   nombre: '',
@@ -40,7 +41,12 @@ const Formulario = (props) => {
       return;
     }
 
+    //Eliminar mensaje de error
+    actualizarError(false);
+
     //Asignar un Id
+    cita.id = uuid(); //Podemos agregarle atributos a un objeto
+    console.log(cita);
 
     //Crear la cita
 
