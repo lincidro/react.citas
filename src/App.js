@@ -3,12 +3,22 @@ import Formulario from './components/Formulario';
 import Cita from './components/Cita';
 
 function App() {
+  //Citas en local storage
+  let citasIniciales = JSON.parse(localStorage.getItem('citas'));
+  if (!citasIniciales) {
+    citasIniciales = [];
+  }
+
   //Arreglo de citas
-  const [citas, setCitas] = useState([]);
+  const [citas, setCitas] = useState(citasIniciales);
 
   //useEffect
   useEffect(() => {
-    console.log('useEffect - citas');
+    if (citasIniciales) {
+      localStorage.setItem('citas', JSON.stringify(citas));
+    } else {
+      localStorage.setItem('citas', JSON.stringify([]));
+    }
   }, [citas]);
 
   //Crear cita
